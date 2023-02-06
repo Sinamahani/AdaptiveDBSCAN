@@ -2,7 +2,7 @@ Introducing a more efficient approach to using the DBSCAN algorithm for data wit
 
 This repository consists of several files, which will be outlined below.
 
-Density_map.py	This file calaculate the density map required for the technique
+density.py	This file calaculate the density map required for the technique
 ///
 DN_DBSCAN.py	This file applies the proposed DBSCAN algorithm.
 ///
