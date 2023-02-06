@@ -1,7 +1,6 @@
-Here we are presenting a new approach to use DBSCAN lgorithm which is more efficient when deaking with data with different density.
-We developed the algorithm for using on Seismic Catalog to cluster earthquakes with similar rate of seismicity in an area and the paper related to it is under review right now.
+Introducing a more efficient approach to using the DBSCAN algorithm for data with varying densities. Our solution has been specifically developed for clustering earthquakes in a seismic catalog based on similar seismicity rates in a given area. The related paper is currently under review.
 
-The program here consisting of several files explained in the following.
+This repository consists of several files, which will be outlined below.
 
 Density_map.py	This file calaculate the density map required for the technique
 DN_DBSCAN.py	This file applies the proposed DBSCAN algorithm.
