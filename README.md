@@ -3,4 +3,4 @@ This is a normalized form of DBSCAN alogorithm that is based on varying number o
 
 ## License
 
-This project is licensed under the [MIT License] License - see the [MIT License](LICENSE) file for details.
+This project is licensed under the MIT License - see the [MIT License](LICENSE) file for details.
