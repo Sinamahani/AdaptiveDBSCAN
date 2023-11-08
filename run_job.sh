@@ -19,5 +19,5 @@ do
 	echo 
 	echo 
 	python density.py "${strarr[0]}"
-	python DB_DBSCAN.py "${strarr[0]}" "${strarr[1]}"
+	python MagDBSCAN.py "${strarr[0]}" "${strarr[1]}"
 done
