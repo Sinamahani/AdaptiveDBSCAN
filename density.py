@@ -1,5 +1,6 @@
 
 import numpy as np
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.signal import convolve2d
@@ -9,10 +10,16 @@ from scipy.signal import convolve2d
 # cell_number = int(cell_number)
 
 class EQ_Density:
-    def __init__(self, file_name, cell_number, min_year=1900, max_year=2050, min_mag=1, max_mag=9,  min_lat=20, max_lat=41, min_lon=43.5, max_lon=64):
-        self.file_name = file_name
+    def __init__(self, cell_number, min_year=1900, max_year=2050, min_mag=1, max_mag=9,  min_lat=20, max_lat=41, min_lon=43.5, max_lon=64, data_folder = r"ExampleData", data_file=r"decl_cat.csv"):
+        try:
+            os.mkdir("Results")
+        except:
+            print("Results folder already exists.")
+               
+        self.data_file = data_file
+        self.data_folder = data_folder  #this is the folder where the data is stored
         self.cell_number = cell_number
-        self.dataset = pd.read_csv(file_name)
+        self.dataset = pd.read_csv(f"{self.data_folder}/{self.data_file}")
         #filtering dataset
         self.dataset = self.dataset[self.dataset.Year >= min_year]
         self.dataset = self.dataset[self.dataset.Year <= max_year]
@@ -28,13 +35,12 @@ class EQ_Density:
         self.dataset["Cell#"] = ''
         
 
-    def calc_density(self, minimum_density=10, save_file_name = r"den_catal.csv"):
+    def calc_density(self, minimum_density=10):
         """
         This function needs a DataFrame file (preferebaly imported as csv or excel) to calculate the density of earthquakes in each cell.
         """
         #creating new dataset
         self.dataset_new = []
-        self.save_file_name = save_file_name
         self.dataset_new = pd.DataFrame(self.dataset_new)
         self.data_length = len(self.dataset['Lon'])
         self.min_lat = np.min(self.dataset['Lat'])*0.999
@@ -68,8 +74,8 @@ class EQ_Density:
                 self.heat_matrix[i, j] = int(Density)
                 
                 self.dataset_new = pd.concat([self.dataset_new,cell])
-        self.dataset_new.to_csv(self.save_file_name)
-        print("Done!\nFile saved as:", self.save_file_name)
+        self.dataset_new.to_csv(f"{self.data_folder}/den_{self.data_file.split('.')[0]}__{self.cell_number}.csv")
+        print("Done!\nFile saved as:", f"{self.data_folder}/den_{self.data_file.split('.')[0]}__{self.cell_number}.csv")
         print("Density Matrix Shape:\n", self.heat_matrix.shape)
         return self.heat_matrix
     
@@ -85,9 +91,9 @@ class EQ_Density:
         plt.imshow(self.heat_matrix, cmap='viridis', interpolation='nearest', extent=extent, origin='lower')
         plt.colorbar(shrink=0.5)
         try:
-            fig.savefig(f"results/den_cat_{self.cell_number}.png")
+            fig.savefig(f"{self.data_folder}/IMG_{self.data_file.split('.')[0]}__{self.cell_number}.png")
         except:
-            raise FileNotFoundError("Make sure you have a folder named 'results' in your directory. If not, create one.")
+            raise FileNotFoundError(f"Make sure you have a folder named '{self.data_folder}' in your directory. If not, create one.")
         plt.show()
 
     def cell_smoother(self, apply_smooth=True, plot_on = True):
@@ -103,7 +109,7 @@ class EQ_Density:
             fig = plt.figure(figsize=(10, 10))
             plt.imshow(self.smooth_heat_matrix, cmap='viridis', interpolation='nearest', extent=extent, origin='lower')
             plt.colorbar(shrink=0.5)
-            fig.savefig(f"results/den_cat_{self.cell_number}_smooth.png")
+            fig.savefig(f"{self.data_folder}/IMG_{self.data_file.split('.')[0]}__{self.cell_number}_smooth.png")
             plt.show()
         if apply_smooth:
             self.apply_smooth_den()
@@ -116,11 +122,11 @@ class EQ_Density:
             for j in range(self.smooth_heat_matrix.shape[1]):
                 cell = self.dataset_new[self.dataset_new["Cell#"] == n]
                 smooth_val = self.smooth_heat_matrix[i, j]
-                cell["Density"] = int(smooth_val)
+                cell.loc[:, "Density"] = int(smooth_val)
                 n += 1
                 self.dataset_smooth = pd.concat([self.dataset_smooth, cell])
-        self.dataset_smooth.to_csv(f"den_cat_{self.cell_number}_smooth.csv")
-        print(f"Done!\nFile saved as: den_cat_{self.cell_number}_smooth.csv")
+        self.dataset_smooth.to_csv(f"{self.data_folder}/den_{self.data_file.split('.')[0]}__{self.cell_number}_smooth.csv")
+        print(f"Done!\nFile saved as: den_{self.data_file.split('.')[0]}__{self.cell_number}_smooth.csv")
         return self.dataset_smooth
 
                 

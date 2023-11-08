@@ -1,10 +1,8 @@
-import sys
 import numpy as np
 import pandas as pd
 from scipy.spatial import distance_matrix
 # from mpl_toolkits.basemap import Basemap
 from matplotlib import pyplot as plt
-import matplotlib
 import geopandas as gpd
 
 # _, density_file_name, radius = sys.argv
@@ -14,7 +12,7 @@ class dbscan:
     def __init__(self, radius, density_file_name):
         self.radius = radius
         self.density_file_name = density_file_name
-        self.dataset = pd.read_csv(density_file_name)
+        self.dataset = pd.read_csv(self.density_file_name)
         self.dataset["Label"] = ''
 
     def ExpandCluster(self, PointNeighbor, seeds):
@@ -46,36 +44,51 @@ class dbscan:
                     self.dataset.loc[i,("Label")] = 0
         return self.dataset
     
-    # def plot_cluster_names(self):
-    #     """this function is written to plot clusters names in the map"""
-    #     loc = self.cluster_center_location
-    #     for ind in loc.index:
-    #         plt.text(loc["Lon"][ind], loc["Lat"][ind], f"{loc['Label'][ind]}", size=12, color="white")
     
-    # def cluster_center(self):
-    #     self.cluster_center_location = self.dataset.groupby("Label").mean()
-    #     return self.cluster_center_location
-    
-    def plot_clusters(self):
+    def plot_clusters(self, **kwargs):
+        """Plot the clusters on a map using geopandas and matplotlib
+        
+        **kwargs:
+        cmap_shp: str, default="grey"
+            The colormap to use for the shape file in the background
+        cmap_scatter: str, default="turbo"
+            The colormap to use for the scatter plot
+        shp_linewidth: float, default=2
+            The linewidth of the shape file
+        save_fig: bool, default=False
+            Whether to save the figure or not, if so, it will be saved in the ExampleData folder
+        save_fig_format: str, default="pdf"
+            The format to save the figure in     
+        """
+        cmap_shp = kwargs.get("cmap", "grey")
+        cmap_scatter = kwargs.get("cmap", "turbo")
+        shp_linewidth = kwargs.get("shp_linewidth", 2)
+        save_fig = kwargs.get("save_fig", False)
+        save_fig_format = kwargs.get("save_fig_format", "pdf")
+
+
         x, y, c = self.dataset["Lon"][self.dataset.Label>0], self.dataset["Lat"][self.dataset.Label>0], self.dataset["Label"][self.dataset.Label>0]
         x_noise, y_noise, c_noise = self.dataset["Lon"][self.dataset.Label==0], self.dataset["Lat"][self.dataset.Label==0], self.dataset["Label"][self.dataset.Label==0]
-        colors  = [f"C{i}" for i in np.arange(1, c.max()+1)]
-        cmap, norm = matplotlib.colors.from_levels_and_colors(np.arange(1, c.max()+2), colors)
         fig1, ax1 = plt.subplots(figsize=(5,5))
-        model = "tahernia"
-        if model != "None":
-            shape_file = gpd.read_file(f"shape-files/{model}.shp")
-            shape_file.plot(ax=ax1, color="black", linewidth=2)
-        scatter2 = ax1.scatter(x_noise, y_noise, c="k",s=1, alpha=0.25)
-        scatter1 = ax1.scatter(x, y, c=c, cmap="turbo",linewidths=0.05,edgecolor='k',s=10)
+        min_lon, max_lon = self.dataset["Lon"].min(), self.dataset["Lon"].max()
+        min_lat, max_lat = self.dataset["Lat"].min(), self.dataset["Lat"].max()
+
+        #ploting background
+        shape_file = gpd.read_file(f"shape-files/World_Countries_Generalized.shp")
+        shape_file.plot(ax=ax1, color="black", linewidth=shp_linewidth, cmap=cmap_shp, alpha=0.3)
+        plt.xlim(min_lon, max_lon)
+        plt.ylim(min_lat, max_lat)
+
+        #ploting clusters
+        ax1.scatter(x_noise, y_noise, c="k",s=1, alpha=0.25)
+        ax1.scatter(x, y, c=c, cmap=cmap_scatter,linewidths=0.05 ,edgecolor='k',s=10)
+
         ax1.set_xlabel("Longitude")
         ax1.set_ylabel("Latitude")
         ax1.set_title(f"DBSCAN Clustering with eps={self.radius}")
-        #add topo map
-        m = Basemap(projection='mill',llcrnrlat=24,urcrnrlat=40,\
-                    llcrnrlon=44,urcrnrlon=64,resolution='c')
-        # ax1.legend(*scatter1.legend_elements(), loc="upper right", title="Clusters", framealpha=0.3)
-        fig1.savefig(f"results/dn_{self.radius}__model_{model}_{self.density_file_name.split('.')[0]}.pdf", format="pdf")
+        
+        if save_fig:
+            fig1.savefig(f"ExampleData/IMG_{self.radius}__model_{' '}_{self.density_file_name.split('.')[0].split('/')[0]}.{save_fig_format}", format=save_fig_format)
         plt.show()
 
 
