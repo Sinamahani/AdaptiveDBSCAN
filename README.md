@@ -68,7 +68,7 @@ now it is time to initiate the dbscan class and run the algorithm:
 clustering = clustering = dbscan(radius, density_file_name)
 final = clustering.clustering()
 clustering.plot_clusters()
-final.to_csv(f"Results/R__{density_file_name.split('/')[1]}")
+final.to_csv(f"Results/R__{density_file_name}")
 ```
 
 
