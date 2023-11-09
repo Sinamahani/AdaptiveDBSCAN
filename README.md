@@ -13,8 +13,10 @@ To install the package, you can use pip:<br>
 # Getting Started
 After installing the package, you can use it as follows by importing the modules:
 
-```from dadbscan.density import EQ_Density```
-```from dadbscan.dbscan import EQ_DBSCAN```
+```
+from dadbscan.density import EQ_Density
+from dadbscan.dbscan import EQ_DBSCAN
+```
 
 ###Phase1.
 The first line is being used for creating density map and the second one is for applying the Density-Adaptive DBSCAN algorithm. 
@@ -23,7 +25,8 @@ Now by defining the N value you having database as a csv file, you can run the d
 initiating the EQ_density class:
 ```
 N = 65
-density = EQ_Density(N, database)```
+density = EQ_Density(N, database)
+```
 
 running calc_density method:
 ```heat_matrix = density.calc_density()```
