@@ -1,7 +1,8 @@
 ![Static Badge](https://img.shields.io/badge/License-MIT-yellow) ![Static Badge](https://img.shields.io/badge/ML-tested-blue)
-![Logo](https://github.com/Sinamahani/AdaptiveDBSCAN/blob/main/logo.png)
 
 # AdaptiveDBSCAN
+![Logo](https://github.com/Sinamahani/AdaptiveDBSCAN/blob/main/logo.png)
+
 This is a normalized form of DBSCAN alogorithm that is based on varying number of neighbour. This algorithm is useful when your data has different density pattern. To get more information about the algorithm, please refer to the paper.
 
 # installation
