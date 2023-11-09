@@ -47,7 +47,7 @@ class dbscan:
     
     def plot_clusters(self, **kwargs):
         """Plot the clusters on a map using geopandas and matplotlib
-        
+        ----------
         **kwargs:
         cmap_shp: str, default="grey"
             The colormap to use for the shape file in the background
@@ -58,13 +58,18 @@ class dbscan:
         save_fig: bool, default=False
             Whether to save the figure or not, if so, it will be saved in the ExampleData folder
         save_fig_format: str, default="pdf"
-            The format to save the figure in     
+            The format to save the figure in 
+        shape_file_address: str, default=False
+            The address of the shape file to plot in the background, you can use the World_Countries_Generalized.shp file in the ShapeFiles folder.
+            shape_file_address="ShapeFiles/World_Countries_Generalized.shp"
+           
         """
         cmap_shp = kwargs.get("cmap", "grey")
         cmap_scatter = kwargs.get("cmap", "turbo")
         shp_linewidth = kwargs.get("shp_linewidth", 2)
         save_fig = kwargs.get("save_fig", False)
         save_fig_format = kwargs.get("save_fig_format", "pdf")
+        shp_address = kwargs.get("shape_file_address", False)
 
 
         x, y, c = self.dataset["Lon"][self.dataset.Label>0], self.dataset["Lat"][self.dataset.Label>0], self.dataset["Label"][self.dataset.Label>0]
@@ -74,10 +79,11 @@ class dbscan:
         min_lat, max_lat = self.dataset["Lat"].min(), self.dataset["Lat"].max()
 
         #ploting background
-        shape_file = gpd.read_file(f"shape-files/World_Countries_Generalized.shp")
-        shape_file.plot(ax=ax1, color="black", linewidth=shp_linewidth, cmap=cmap_shp, alpha=0.3)
-        plt.xlim(min_lon, max_lon)
-        plt.ylim(min_lat, max_lat)
+        if shp_address:
+            shape_file = gpd.read_file(f"World_Countries_Generalized.shp")
+            shape_file.plot(ax=ax1, color="black", linewidth=shp_linewidth, cmap=cmap_shp, alpha=0.3)
+            plt.xlim(min_lon, max_lon)
+            plt.ylim(min_lat, max_lat)
 
         #ploting clusters
         ax1.scatter(x_noise, y_noise, c="k",s=1, alpha=0.25)
@@ -88,7 +94,7 @@ class dbscan:
         ax1.set_title(f"DBSCAN Clustering with eps={self.radius}")
         
         if save_fig:
-            fig1.savefig(f"ExampleData/IMG_{self.radius}__model_{' '}_{self.density_file_name.split('.')[0].split('/')[0]}.{save_fig_format}", format=save_fig_format)
+            fig1.savefig(f"Results/IMG_{self.radius}__model_{' '}_{self.density_file_name.split('.')[0].split('/')[0]}.{save_fig_format}", format=save_fig_format)
         plt.show()
 
 
