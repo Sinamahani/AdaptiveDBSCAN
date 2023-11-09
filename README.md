@@ -30,6 +30,11 @@ N = 65
 density = EQ_Density(N, database)
 ```
 
+To test the program, you can download the test file from the github repo and use decl_cat.csv as database.
+```
+database = 'decl_cat.csv'
+```
+
 running calc_density method:
 ```
 heat_matrix = density.calc_density()
