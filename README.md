@@ -1,9 +1,5 @@
 ![Static Badge](https://img.shields.io/badge/License-MIT-yellow) ![Static Badge](https://img.shields.io/badge/ML-tested-blue) ![GitHub Repo stars](https://img.shields.io/github/stars/sinamahani/AdaptiveDBSCAN) ![GitHub forks](https://img.shields.io/github/forks/sinamahani/AdaptiveDBSCAN) ![GitHub all releases](https://img.shields.io/github/downloads/sinamahani/AdaptiveDBSCAN/total) 
 
-
-
-
-
 <br>
 ![Logo](https://github.com/Sinamahani/AdaptiveDBSCAN/blob/main/logo.png)
 <br>
