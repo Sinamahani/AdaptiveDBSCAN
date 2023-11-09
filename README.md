@@ -1,4 +1,5 @@
-![Static Badge](https://img.shields.io/badge/License-MIT-yellow) ![Static Badge](https://img.shields.io/badge/ML-tested-blue)
+![Static Badge](https://img.shields.io/badge/License-MIT-yellow) ![Static Badge](https://img.shields.io/badge/ML-tested-blue) ![GitHub Repo stars](https://img.shields.io/github/stars/sinamahani/AdaptiveDBSCAN)
+
 <br>
 ![Logo](https://github.com/Sinamahani/AdaptiveDBSCAN/blob/main/logo.png)
 <br>
