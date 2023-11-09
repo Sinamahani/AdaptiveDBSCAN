@@ -7,6 +7,11 @@
 This is a normalized form of DBSCAN alogorithm that is based on varying number of neighbour. This algorithm is useful when your data has different density pattern. To get more information about the algorithm, please refer to the paper.
 
 # installation
+For the best performance, it is recommended to create a new environment and then install the package:
+```
+conda create -n dadbscan python
+```
+
 To install the package, you can use pip:<br>
 ```
 pip install dadbscan
