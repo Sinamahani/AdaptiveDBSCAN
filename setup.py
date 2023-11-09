@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="adaptive-dbscan",
-    version="0.1",
+    version="0.3.1",
     description="A python package for density adaptive DBSCAN clustering",
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
