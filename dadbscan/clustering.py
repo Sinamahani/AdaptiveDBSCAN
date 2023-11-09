@@ -69,7 +69,7 @@ class dbscan:
         shp_linewidth = kwargs.get("shp_linewidth", 2)
         save_fig = kwargs.get("save_fig", False)
         save_fig_format = kwargs.get("save_fig_format", "pdf")
-        shp_address = kwargs.get("shape_file_address", False)
+        shape_file_address = kwargs.get("shape_file_address", False)
 
 
         x, y, c = self.dataset["Lon"][self.dataset.Label>0], self.dataset["Lat"][self.dataset.Label>0], self.dataset["Label"][self.dataset.Label>0]
@@ -79,8 +79,8 @@ class dbscan:
         min_lat, max_lat = self.dataset["Lat"].min(), self.dataset["Lat"].max()
 
         #ploting background
-        if shp_address:
-            shape_file = gpd.read_file(f"World_Countries_Generalized.shp")
+        if shape_file_address:
+            shape_file = gpd.read_file(shape_file_address)
             shape_file.plot(ax=ax1, color="black", linewidth=shp_linewidth, cmap=cmap_shp, alpha=0.3)
             plt.xlim(min_lon, max_lon)
             plt.ylim(min_lat, max_lat)

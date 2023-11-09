@@ -20,6 +20,7 @@ from dadbscan.density import EQ_Density
 from dadbscan.dbscan import EQ_DBSCAN
 ```
 
+------------------------------------------------------------------------------------<br>
 ###Phase1.
 The first line is being used for creating density map and the second one is for applying the Density-Adaptive DBSCAN algorithm. 
 Now by defining the N value you having database as a csv file, you can run the density algorithm:
@@ -52,7 +53,7 @@ smoothed_heat_matrix = density.cell_smoother(apply_smooth=True)
 
 ! All the matrixes are saved physically in the folder 'Results'.
 
-
+------------------------------------------------------------------------------------<br>
 ###Phase2.
 Now that you have the density map, you can run the Density-Adaptive DBSCAN algorithm. To do so, you need to define the following parameters:
 
@@ -73,22 +74,27 @@ final.to_csv(f"Results/R__{density_file_name}")
 
 When plotting the clustered data, you have some options:
 def plot_clusters(self, **kwargs):
-        """Plot the clusters on a map using GeoPandas and matplotlib
-        ----------
-        **kwargs:
-        cmap_shp: str, default="grey"
-            The colormap to use for the shape file in the background
-        cmap_scatter: str, default="turbo"
-            The colormap to use for the scatter plot
-        shp_linewidth: float, default=2
-            The linewidth of the shape file
-        save_fig: bool, default=False
-            Whether to save the figure or not, if so, it will be saved in the ExampleData folder
-        save_fig_format: str, default="pdf"
-            The format to save the figure in 
-        shape_file_address: str, default=False
-            The address of the shape file to plot in the background, you can use the World_Countries_Generalized.shp file in the ShapeFiles folder.
-            shape_file_address="ShapeFiles/World_Countries_Generalized.shp"
+        """Plot the clusters on a map using GeoPandas and matplotlib<br>
+        ----------<br>
+        **kwargs:<br>
+        cmap_shp: str, default="grey"<br>
+            The colormap to use for the shape file in the background<br>
+
+        cmap_scatter: str, default="turbo"<br>
+            The colormap to use for the scatter plot<br>
+
+        shp_linewidth: float, default=2<br>
+            The linewidth of the shape file<br>
+
+        save_fig: bool, default=False<br>
+            Whether to save the figure or not, if so, it will be saved in the ExampleData folder<br>
+
+        save_fig_format: str, default="pdf"<br>
+            The format to save the figure in <br>
+
+        shape_file_address: str, default=False<br>
+            The address of the shape file to plot in the background, you can use the World_Countries_Generalized.shp file in the ShapeFiles folder.<br>
+            shape_file_address="ShapeFiles/World_Countries_Generalized.shp"<br>
         """
 
 
