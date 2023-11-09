@@ -1,20 +1,18 @@
 ![Static Badge](https://img.shields.io/badge/License-MIT-yellow) ![Static Badge](https://img.shields.io/badge/ML-tested-blue)
-![DADBSCAN LOGO]([https://github.com/Sinamahani/AdaptiveDBSCAN/logo.png](https://github.com/Sinamahani/AdaptiveDBSCAN/blob/main/logo.png))
+![Logo](https://github.com/Sinamahani/AdaptiveDBSCAN/logo.png](https://github.com/Sinamahani/AdaptiveDBSCAN/blob/main/logo.png)
 
 # AdaptiveDBSCAN
 This is a normalized form of DBSCAN alogorithm that is based on varying number of neighbour. This algorithm is useful when your data has different density pattern. To get more information about the algorithm, please refer to the paper.
 
 # installation
 To install the package, you can use pip:
-```
-pip install dadbscan
-```
+```pip install dadbscan```
 
 # Getting Started
 After installing the package, you can use it as follows by importing the modules:
 
-```from dadbscan.density import EQ_Density
-```from dadbscan.dbscan import EQ_DBSCAN
+```from dadbscan.density import EQ_Density```
+```from dadbscan.dbscan import EQ_DBSCAN```
 
 ###Phase1.
 The first line is being used for creating density map and the second one is for applying the Density-Adaptive DBSCAN algorithm. 
