@@ -79,8 +79,9 @@ final.to_csv(f"Results/R__{density_file_name}")
 ```
 
 When plotting the clustered data, you have some options:
-def plot_clusters(self, **kwargs):
-        """Plot the clusters on a map using GeoPandas and matplotlib<br>
+```def plot_clusters(self, **kwargs):
+        """
+        Plot the clusters on a map using GeoPandas and matplotlib<br>
         ----------<br>
         **kwargs:<br>
         cmap_shp: str, default="grey"<br>
@@ -102,11 +103,12 @@ def plot_clusters(self, **kwargs):
             The address of the shape file to plot in the background, you can use the World_Countries_Generalized.shp file in the ShapeFiles folder.<br>
             shape_file_address="ShapeFiles/World_Countries_Generalized.shp"<br>
         """
+```
 
 
 
 ## Reference
-Sabermahani, S., Frederiksen, A., 2023, Improved earthquake clustering using a Density-Adaptive DBSCAN algorithm: an example from Iran, Seismological Research Letters
+Sina Sabermahani, Andrew W. Frederiksen; Improved Earthquake Clustering Using a Density‐Adaptive DBSCAN Algorithm: An Example from Iran. Seismological Research Letters 2023; doi: https://doi-org.uml.idm.oclc.org/10.1785/0220220305
 
 ## License
 
