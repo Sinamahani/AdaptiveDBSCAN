@@ -83,7 +83,7 @@ When plotting the clustered data, you have some options:
 def plot_clusters(self, **kwargs):
         """
         **kwargs:<br>
-        cmap_shp: str, default="grey"<br>
+        cmap_shp: str, default="grey"
             The colormap to use for the shape file in the background<br>
 
         cmap_scatter: str, default="turbo"<br>
