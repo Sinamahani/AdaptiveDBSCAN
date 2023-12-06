@@ -79,10 +79,9 @@ final.to_csv(f"Results/R__{density_file_name}")
 ```
 
 When plotting the clustered data, you have some options:
-```def plot_clusters(self, **kwargs):
+```
+def plot_clusters(self, **kwargs):
         """
-        Plot the clusters on a map using GeoPandas and matplotlib<br>
-        ----------<br>
         **kwargs:<br>
         cmap_shp: str, default="grey"<br>
             The colormap to use for the shape file in the background<br>
