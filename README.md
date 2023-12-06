@@ -82,25 +82,25 @@ When plotting the clustered data, you have some options:
 ```
 def plot_clusters(self, **kwargs):
         """
-        **kwargs:<br>
+        **kwargs:
         cmap_shp: str, default="grey"
-            The colormap to use for the shape file in the background<br>
+            The colormap to use for the shape file in the background
 
-        cmap_scatter: str, default="turbo"<br>
-            The colormap to use for the scatter plot<br>
+        cmap_scatter: str, default="turbo"
+            The colormap to use for the scatter plot
 
-        shp_linewidth: float, default=2<br>
-            The linewidth of the shape file<br>
+        shp_linewidth: float, default=2
+            The linewidth of the shape file
 
-        save_fig: bool, default=False<br>
-            Whether to save the figure or not, if so, it will be saved in the ExampleData folder<br>
+        save_fig: bool, default=False
+            Whether to save the figure or not, if so, it will be saved in the ExampleData folder
 
-        save_fig_format: str, default="pdf"<br>
-            The format to save the figure in <br>
+        save_fig_format: str, default="pdf"
+            The format to save the figure in 
 
-        shape_file_address: str, default=False<br>
-            The address of the shape file to plot in the background, you can use the World_Countries_Generalized.shp file in the ShapeFiles folder.<br>
-            shape_file_address="ShapeFiles/World_Countries_Generalized.shp"<br>
+        shape_file_address: str, default=False
+            The address of the shape file to plot in the background, you can use the World_Countries_Generalized.shp file in the ShapeFiles folder.
+            shape_file_address="ShapeFiles/World_Countries_Generalized.shp"
         """
 ```
 
