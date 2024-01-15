@@ -42,7 +42,7 @@ To test the program, you can download the test file from the github repo and use
 database = 'decl_cat.csv'
 ```
 ! It should be noted that, your dataset must have a header like below (order is not important but it is case sensetive):
-`**Year,Month,Day,Lat,Lon,Depth,Mw**`
+__Year,Month,Day,Lat,Lon,Depth,Mw__
 
 running calc_density method:
 ```
