@@ -27,7 +27,7 @@ from dadbscan.clustering import dbscan
 ```
 
 ------------------------------------------------------------------------------------<br>
-###Phase1.
+### Phase1.
 The first line is being used for creating density map and the second one is for applying the Density-Adaptive DBSCAN algorithm. 
 Now by defining the N value you having database as a csv file, you can run the density algorithm:
 
@@ -63,7 +63,7 @@ smoothed_heat_matrix = density.cell_smoother(apply_smooth=True)
 ! All the matrixes are saved physically in the folder 'Results'.
 
 ------------------------------------------------------------------------------------<br>
-###Phase2.
+### Phase2.
 Now that you have the density map, you can run the Density-Adaptive DBSCAN algorithm. To do so, you need to define the following parameters:
 
 ```
