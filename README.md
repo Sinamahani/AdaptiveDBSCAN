@@ -42,7 +42,8 @@ To test the program, you can download the test file from the github repo and use
 database = 'decl_cat.csv'
 ```
 ! It should be noted that, your dataset must have a header like below (order is not important but it is case sensetive):
-__Year,Month,Day,Lat,Lon,Depth,Mw__
+__Year, Month, Lat, Lon, Depth, Mw__
+! If you have more columns in your dataset, you do NOT need to remove them.
 
 running calc_density method:
 ```
