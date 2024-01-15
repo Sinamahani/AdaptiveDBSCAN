@@ -69,7 +69,7 @@ Now that you have the density map, you can run the Density-Adaptive DBSCAN algor
 
 ```
 radius = density.radius
-density_file_name = f"Results/den_decl_cat__65_smooth.csv"
+density_file_name = "Results/den_decl_cat__65_smooth.csv"
 ```
 
 As it can be seen above, radius can be derived from the denisty class.
