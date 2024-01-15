@@ -23,7 +23,7 @@ After installing the package, you can use it as follows by importing the modules
 
 ```
 from dadbscan.density import EQ_Density
-from dadbscan.dbscan import EQ_DBSCAN
+from dadbscan.clustering import dbscan
 ```
 
 ------------------------------------------------------------------------------------<br>
