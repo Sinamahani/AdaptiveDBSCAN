@@ -41,6 +41,8 @@ To test the program, you can download the test file from the github repo and use
 ```
 database = 'decl_cat.csv'
 ```
+! It should be noted that, your dataset must have a header like below (order is not important but it is case sensetive):
+`__Year,Month,Day,Lat,Lon,Depth,Mw__`
 
 running calc_density method:
 ```
@@ -49,7 +51,7 @@ heat_matrix = density.calc_density()
 
 plotting the density map:
 ```
-density.plot_density(heat_matrix)
+density.plot_den()
 ```
 
 a feature that can be used is smoothing the density map. This can be done by using the following method:
