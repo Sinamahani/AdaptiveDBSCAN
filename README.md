@@ -76,7 +76,7 @@ As it can be seen above, radius can be derived from the denisty class.
 now it is time to initiate the dbscan class and run the algorithm:
 
 ```
-clustering = clustering = dbscan(radius, density_file_name)
+clustering = dbscan(radius, density_file_name)
 ```
 Step below can take  a few minutes to be done...
 ```
