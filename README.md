@@ -50,6 +50,7 @@ running calc_density method:
 ```
 heat_matrix = density.calc_density()
 ```
+In the command above, by adding `minimum_density = ...`, you can define the threshold for the minimum value of the density for each cell. Default value is 10.
 
 plotting the density map:
 ```
