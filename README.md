@@ -34,8 +34,9 @@ Now by defining the N value you having database as a csv file, you can run the d
 initiating the EQ_density class:
 ```
 N = 65
-density = EQ_Density(N, database)
+density = EQ_Density(N, database, min_year=1900, max_year=2050, min_mag=1, max_mag=9,  min_lat=20, max_lat=41, min_lon=43.5, max_lon=64)
 ```
+# ! Remember to appropriately configure filters such as min_year, max_year, and others in your catalog. Setting these values correctly according to your dataset is crucial; failing to do so may result in partial or complete filtering out of your catalog.
 
 To test the program, you can download the test file from the github repo and use decl_cat.csv as database.
 ```
@@ -60,7 +61,7 @@ a feature that can be used is smoothing the density map. This can be done by usi
 smoothed_heat_matrix = density.cell_smoother(apply_smooth=True)
 ```
 
-! All the matrixes are saved physically in the folder 'Results'.
+! All the matrixes are saved physically in the folder 'Results' in two formats, __PNG__ and __CSV__.
 
 ------------------------------------------------------------------------------------<br>
 ### Phase2.
@@ -68,7 +69,7 @@ Now that you have the density map, you can run the Density-Adaptive DBSCAN algor
 
 ```
 radius = density.radius
-density_file_names = f"Results/den_decl_cat__65_smooth.csv"
+density_file_name = f"Results/den_decl_cat__65_smooth.csv"
 ```
 
 As it can be seen above, radius can be derived from the denisty class.
@@ -76,8 +77,15 @@ now it is time to initiate the dbscan class and run the algorithm:
 
 ```
 clustering = clustering = dbscan(radius, density_file_name)
+```
+Step below can take  a few minutes to be done...
+```
 final = clustering.clustering()
+```
 clustering.plot_clusters()
+```
+You can finally save the calculation results in a file by command below:
+```
 final.to_csv(f"Results/R__{density_file_name}")
 ```
 
