@@ -87,7 +87,7 @@ clustering.plot_clusters()
 ```
 You can finally save the calculation results in a file by command below:
 ```
-final.to_csv(f"Results/R__{density_file_name}")
+final.to_csv(f"Results/R__final.csv")
 ```
 
 When plotting the clustered data, you have some options:
