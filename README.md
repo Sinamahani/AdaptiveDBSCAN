@@ -36,7 +36,7 @@ initiating the EQ_density class:
 N = 65
 density = EQ_Density(N, database, min_year=1900, max_year=2050, min_mag=1, max_mag=9,  min_lat=20, max_lat=41, min_lon=43.5, max_lon=64)
 ```
-# ! Remember to appropriately configure filters such as min_year, max_year, and others in your catalog. Setting these values correctly according to your dataset is crucial; failing to do so may result in partial or complete filtering out of your catalog.
+#### ! Remember to appropriately configure filters such as min_year, max_year, and others in your catalog. Setting these values correctly according to your dataset is crucial; failing to do so may result in partial or complete filtering out of your catalog.
 
 To test the program, you can download the test file from the github repo and use decl_cat.csv as database.
 ```
