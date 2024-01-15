@@ -82,6 +82,7 @@ Step below can take  a few minutes to be done...
 ```
 final = clustering.clustering()
 ```
+```
 clustering.plot_clusters()
 ```
 You can finally save the calculation results in a file by command below:
