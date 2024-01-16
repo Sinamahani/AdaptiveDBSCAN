@@ -1,7 +1,7 @@
 [![DOI](https://zenodo.org/badge/528950247.svg)](https://zenodo.org/doi/10.5281/zenodo.10088081)
 ![Static Badge](https://img.shields.io/badge/License-MIT-yellow) ![Static Badge](https://img.shields.io/badge/ML-tested-blue) ![GitHub Repo stars](https://img.shields.io/github/stars/sinamahani/AdaptiveDBSCAN) ![GitHub all releases](https://img.shields.io/github/downloads/sinamahani/AdaptiveDBSCAN/total) 
 <br>
-![logo](https://github.com/Sinamahani/AdaptiveDBSCAN/blob/main/logo.png)
+![logo](https://github.com/Sinamahani/AdaptiveDBSCAN/blob/main/logo-dadbscan.png)
 <br>
 # AdaptiveDBSCAN
 
