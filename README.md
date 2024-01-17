@@ -34,14 +34,16 @@ Now by defining the N value you having database as a csv file, you can run the d
 initiating the EQ_density class:
 ```
 N = 65
-density = EQ_Density(N, database, min_year=1900, max_year=2050, min_mag=1, max_mag=9,  min_lat=20, max_lat=41, min_lon=43.5, max_lon=64)
+density = EQ_Density(N, min_year=1900, max_year=2050, min_mag=1, max_mag=9,  min_lat=20, max_lat=41, min_lon=43.5, max_lon=64)
 ```
 #### ! Remember to appropriately configure filters such as min_year, max_year, and others in your catalog. Setting these values correctly according to your dataset is crucial; failing to do so may result in partial or complete filtering out of your catalog.
 
-To test the program, you can download the test file from the github repo and use decl_cat.csv as database.
+To test the program, you can download the test file from the github repo and use decl_cat.csv as database. 
 ```
 database = 'decl_cat.csv'
 ```
+:exclamation: For the current version of the softaware, you need to change the name of your dataset as "decl_cat.csv" in order to be read by the code. We are considering to solve this problem  in the next vesrion.
+
 ! It should be noted that, your dataset must have a header like below (order is not important but it is case sensetive):
 __Year, Month, Lat, Lon, Depth, Mw__
 ! If you have more columns in your dataset, you do NOT need to remove them.
