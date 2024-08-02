@@ -28,23 +28,23 @@ from dadbscan.clustering import dbscan
 
 ------------------------------------------------------------------------------------<br>
 ### Phase1.
-The first line is being used for creating density map and the second one is for applying the Density-Adaptive DBSCAN algorithm. 
-Now by defining the N value you having database as a csv file, you can run the density algorithm:
+The first line is being used for creating a density map and the second one is for applying the Density-Adaptive DBSCAN algorithm. 
+Now by defining the N value you have database as a CSV file, and you can run the density algorithm:
 
 initiating the EQ_density class:
 ```
 N = 65
 density = EQ_Density(N, min_year=1900, max_year=2050, min_mag=1, max_mag=9,  min_lat=20, max_lat=41, min_lon=43.5, max_lon=64)
 ```
-#### ! Remember to appropriately configure filters such as min_year, max_year, and others in your catalog. Setting these values correctly according to your dataset is crucial; failing to do so may result in partial or complete filtering out of your catalog.
+#### ! Remember to appropriately configure filters such as min_year, max_year, and others in your catalogue. Setting these values correctly according to your dataset is crucial; failing to do so may result in partial or complete filtering out of your catalogue.
 
-To test the program, you can download the test file from the github repo and use decl_cat.csv as database. 
+To test the program, you can download the test file from the GitHub repo and use decl_cat.csv as a database. 
 ```
 database = 'decl_cat.csv'
 ```
-:exclamation: For the current version of the softaware, you need to change the name of your dataset as "decl_cat.csv" in order to be read by the code. We are considering to solve this problem  in the next vesrion.
+:exclamation: For the current version of the software, you need to change the name of your dataset to "decl_cat.csv" in order to be read by the code. We are considering to solve this problem  in the next version.
 
-! It should be noted that, your dataset must have a header like below (order is not important but it is case sensetive):
+! It should be noted that your dataset must have a header like below (order is not important but it is case-sensitive):
 __Year, Month, Lat, Lon, Depth, Mw__
 ! If you have more columns in your dataset, you do NOT need to remove them.
 
@@ -52,7 +52,7 @@ running calc_density method:
 ```
 heat_matrix = density.calc_density()
 ```
-In the command above, by adding `minimum_density = ...`, you can define the threshold for the minimum value of the density for each cell. Default value is 10.
+In the command above, by adding `minimum_density = ...`, you can define the threshold for the minimum value of the density for each cell. The default value is 10.
 
 plotting the density map:
 ```
@@ -74,9 +74,9 @@ Now that you have the density map, you can run the Density-Adaptive DBSCAN algor
 radius = density.radius
 density_file_name = "Results/den_decl_cat__65_smooth.csv"
 ```
-! **be carefull to correctly name the `density_file_name`.**
+! **be careful to correctly name the `density_file_name`.**
 
-As it can be seen above, radius can be derived from the denisty class.
+As can be seen above, the radius can be derived from the density class.
 now it is time to initiate the dbscan class and run the algorithm:
 
 ```
@@ -123,7 +123,7 @@ plot_clusters(self, **kwargs):
 
 
 ## Reference
-Sina Sabermahani, Andrew W. Frederiksen; Improved Earthquake Clustering Using a Density‐Adaptive DBSCAN Algorithm: An Example from Iran. Seismological Research Letters 2023; doi: https://doi-org.uml.idm.oclc.org/10.1785/0220220305
+Sina Sabermahani, Andrew W. Frederiksen (2023), Improved Earthquake Clustering Using a Density‐Adaptive DBSCAN Algorithm: An Example from Iran. Seismological Research Letters, doi: https://doi-org.uml.idm.oclc.org/10.1785/0220220305
 
 ## License
 
