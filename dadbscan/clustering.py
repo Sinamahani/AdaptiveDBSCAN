@@ -13,11 +13,13 @@ class dbscan:
         self.radius = radius
         self.density_file_name = density_file_name
         self.dataset = pd.read_csv(self.density_file_name)
-        self.dataset["Label"] = ''
+        self.dataset["Label"] = -100
+        self.dataset["Label"] = self.dataset["Label"].astype("int16")
+    
 
     def ExpandCluster(self, PointNeighbor, seeds):
         for neighbor in PointNeighbor:
-            if (self.dataset["Label"][neighbor] == '' or self.dataset["Label"][neighbor] == 0) and neighbor not in seeds:
+            if (self.dataset["Label"][neighbor] == -100 or self.dataset["Label"][neighbor] == 0) and neighbor not in seeds:
                 seeds.append(neighbor)
 
     def clustering (self):
@@ -26,9 +28,9 @@ class dbscan:
         DistanceMatrix = distance_matrix(self.dataset[["Lon","Lat"]], self.dataset[["Lon","Lat"]])
         C = 0                   #Cluster Counter
         Min_Points = (self.dataset["Density"])
-
+        print(f"Dataset with {m} points loaded. Starting Clustering with eps={eps} ...")
         for i in range(m):
-            if self.dataset.Label[i] == '':
+            if self.dataset.Label[i] == -100:
                 seeds = []    
                 PointNeighbor = np.where(DistanceMatrix[i] <= eps)[0]
                 if len(PointNeighbor) >= Min_Points[i]+1:
@@ -42,6 +44,8 @@ class dbscan:
                         seeds = seeds[1:]
                 else:
                     self.dataset.loc[i,("Label")] = 0
+            # print(f"{seeds}")       
+            # print(f"Progress: {i+1}/{m} points clustered.", end="\r")
         return self.dataset
     
     
@@ -74,7 +78,7 @@ class dbscan:
 
         x, y, c = self.dataset["Lon"][self.dataset.Label>0], self.dataset["Lat"][self.dataset.Label>0], self.dataset["Label"][self.dataset.Label>0]
         x_noise, y_noise, c_noise = self.dataset["Lon"][self.dataset.Label==0], self.dataset["Lat"][self.dataset.Label==0], self.dataset["Label"][self.dataset.Label==0]
-        fig1, ax1 = plt.subplots(figsize=(5,5))
+        fig1, ax1 = plt.subplots(figsize=(7,8), dpi=600)
         min_lon, max_lon = self.dataset["Lon"].min(), self.dataset["Lon"].max()
         min_lat, max_lat = self.dataset["Lat"].min(), self.dataset["Lat"].max()
 
