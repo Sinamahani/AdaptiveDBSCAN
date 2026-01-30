@@ -32,31 +32,36 @@ The first line is being used for creating a density map and the second one is fo
 Now by defining the N value you have database as a CSV file, and you can run the density algorithm:
 
 initiating the EQ_density class:
+
+In the new version of Adaptive DBSCAN, we have added a filering option that can used as below"
 ```
-N = 65
-density = EQ_Density(N, min_year=1900, max_year=2050, min_mag=1, max_mag=9,  min_lat=20, max_lat=41, min_lon=43.5, max_lon=64)
+filters = {"col":["num_picks", "Lat", "Lat", "Lon", "Lon"],  #select column
+           "op":['>', '>=', '<=', ">=", "<="],   # it is an string format like >, =, >=, !=
+           "val":[3, 55, 70, -105, -70] #it can be string or digits}
+N = 65 # number of cells like NxN
+density = EQ_Density(N, data_file='YOUR_FILE_PATH', min_year=1900, max_year=2050, min_mag=1, max_mag=9,  filters=filters, map_extenion_value=0.1) #map_extension_value can used to extend the frame 
 ```
+
 #### ! Remember to appropriately configure filters such as min_year, max_year, and others in your catalogue. Setting these values correctly according to your dataset is crucial; failing to do so may result in partial or complete filtering out of your catalogue.
 
 To test the program, you can download the test file from the GitHub repo and use decl_cat.csv as a database. 
 ```
-database = 'decl_cat.csv'
+YOUR_FILE_PATH = 'decl_cat.csv'
 ```
-:exclamation: For the current version of the software, you need to change the name of your dataset to "decl_cat.csv" in order to be read by the code. We are considering to solve this problem  in the next version.
 
 ! It should be noted that your dataset must have a header like below (order is not important but it is case-sensitive):
-__Year, Month, Lat, Lon, Depth, Mw__
-! If you have more columns in your dataset, you do NOT need to remove them.
+__Lat, Lon, (Depth,Year, Month, Mw)__
+! If you have more columns in your dataset, you do NOT need to remove them. Lat and Lon are essentail and they are case sensitive.
 
 running calc_density method:
 ```
-heat_matrix = density.calc_density()
+heat_matrix = density.calc_density(minimum_density=10)  #setting the background value by minimum_density
 ```
 In the command above, by adding `minimum_density = ...`, you can define the threshold for the minimum value of the density for each cell. The default value is 10.
 
 plotting the density map:
 ```
-density.plot_den()
+density.plot_density()
 ```
 
 a feature that can be used is smoothing the density map. This can be done by using the following method:
@@ -89,6 +94,12 @@ final = clustering.clustering()
 ```
 clustering.plot_clusters()
 ```
+If you have a shape file to plot it on the background, you can use it here.
+
+```
+clustering.plot_clusters(shape_file_address="data/ShapeFiles/World_Countries_Generalized.shp")
+```
+
 You can finally save the calculation results in a file by command below:
 ```
 final.to_csv(f"Results/R__final.csv")
