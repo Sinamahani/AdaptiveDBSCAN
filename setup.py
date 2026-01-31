@@ -9,7 +9,7 @@ setup(
     author="Sina Sabermahani",
     author_email="sina.sabermahani@gmail.com",
     url="https://github.com/Sinamahani/AdaptiveDBSCAN",
-    license=open('LICENSE').read(),
+    license="MIT",
     packages=find_packages(),
     install_requires=[
         'numpy>=1.26.0',
